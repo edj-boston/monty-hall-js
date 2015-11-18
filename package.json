@@ -1,0 +1,29 @@
+{
+  "name": "monty-hall",
+  "version": "0.9.0",
+  "description": "A Monty Hall problem simulator.",
+  "main": "lib/monty-hall.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/edj-boston/monty-hall-js.git"
+  },
+  "keywords": [
+    "Monty",
+    "Hall",
+    "Problem",
+    "Simulator"
+  ],
+  "author": "Eric Johnson <edj.boston@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/edj-boston/monty-hall-js/issues"
+  },
+  "homepage": "https://github.com/edj-boston/monty-hall-js",
+  "devDependencies": {
+    "mocha": "^2.3.4",
+    "should": "^7.1.1"
+  }
+}
