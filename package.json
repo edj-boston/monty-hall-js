@@ -1,6 +1,6 @@
 {
   "name": "monty-hall",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "A Monty Hall problem simulator.",
   "main": "lib/monty-hall.js",
   "scripts": {
