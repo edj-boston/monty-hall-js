@@ -21,4 +21,11 @@ var MontyHall = require('monty-hall');
 var m = new MontyHall(10000);
 
 console.log(m.results);
+
+> { switches: 5006,
+  switchWins: 3304,
+  stays: 4994,
+  stayWins: 1687,
+  switchWinPercent: 66,
+  stayWinPercent: 34 }
 ```
