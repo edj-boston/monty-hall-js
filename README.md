@@ -1,4 +1,4 @@
-Monty Hall JS  [![Build Status](https://travis-ci.org/edj-boston/monty-hall-js.svg?branch=master)](https://travis-ci.org/edj-boston/monty-hall-js) [![Dependency Status](https://david-dm.org/edj-boston/monty-hall-js.svg)](https://david-dm.org/edj-boston/monty-hall-js)[![devDependency Status](https://david-dm.org/edj-boston/monty-hall-js/dev-status.svg)](https://david-dm.org/edj-boston/monty-hall-js#info=devDependencies)
+Monty Hall JS  [![Build Status](https://travis-ci.org/edj-boston/monty-hall-js.svg?branch=master)](https://travis-ci.org/edj-boston/monty-hall-js) [![Dependency Status](https://david-dm.org/edj-boston/monty-hall-js.svg)](https://david-dm.org/edj-boston/monty-hall-js) [![devDependency Status](https://david-dm.org/edj-boston/monty-hall-js/dev-status.svg)](https://david-dm.org/edj-boston/monty-hall-js#info=devDependencies)
 =============
 
 A Monty Hall problem simulator.
