@@ -16,7 +16,7 @@ describe('Game', function() {
 		game.car.should.be.type('number').and.be.within(0, 2);
 		game.guestOrigChoice.should.be.type('number').and.be.within(0, 2);
 		game.hostChoice.should.be.type('number').and.be.within(0, 2);
-  		game.switch.should.be.type('number').and.be.within(0, 1);
+  		game.switch.should.be.type('boolean');
 		game.guestFinalChoice.should.be.type('number').and.be.within(0, 2);
 		game.score.should.be.type('boolean');
 	});
