@@ -4,7 +4,7 @@
   "description": "A Monty Hall problem simulator.",
   "main": "lib/monty-hall.js",
   "scripts": {
-    "test": "mocha"
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
