@@ -6,7 +6,7 @@ var gulp = require('gulp'),
 
 
 // instrument the code
-gulp.task('cover', function () {
+gulp.task('cover', ['lint'], function () {
     return gulp.src(['lib/*.js'])
         .pipe(istanbul())
         .pipe(istanbul.hookRequire());
