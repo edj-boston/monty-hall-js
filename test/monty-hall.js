@@ -5,7 +5,7 @@ var should = require('should'),
 describe('MontyHall', function() {
 
 	it('Should run the proper number of games', function() {
-		var num = 10;
+		var num = 100;
 		var m = new MontyHall(num);
 
 		should.equal(num, m.games.length);
