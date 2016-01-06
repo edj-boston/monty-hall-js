@@ -64,4 +64,10 @@ gulp.task('coveralls', ['test'], function () {
         .pipe(coveralls());
 });
 
+
+// Run tests and product coverage
+gulp.task('travis', ['coveralls']);
+
+
+// Default task for when you run `$ gulp`
 gulp.task('default', ['watch']);
