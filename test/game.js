@@ -1,11 +1,10 @@
 var should = require('should'),
-	Game = require('../lib/Game.js');
+	Game   = require('../lib/Game.js');
 
 
 describe('Game', function() {
 
 	it('Should have certain properties and values', function() {
-		// New up a game
 		var game = new Game()
 			.guestChoose()
 			.hostChoose()

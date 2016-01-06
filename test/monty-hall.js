@@ -1,4 +1,4 @@
-var should = require('should'),
+var should    = require('should'),
 	MontyHall = require('../lib/Monty-Hall.js');
 
 
