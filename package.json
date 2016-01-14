@@ -52,5 +52,8 @@
       "quotes": 0,
       "indent": 2
     }
+  },
+  "dependencies": {
+    "gulp-sequence": "^0.4.4"
   }
 }

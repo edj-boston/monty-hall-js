@@ -4,7 +4,8 @@ var coveralls = require('gulp-coveralls'),
     gulp      = require('gulp'),
     gutil     = require('gulp-util'),
     istanbul  = require('gulp-istanbul'),
-    mocha     = require('gulp-mocha');
+    mocha     = require('gulp-mocha'),
+    sequence  = require('gulp-sequence');
 
 
 // Lint as JS files (including this one)
@@ -21,7 +22,7 @@ gulp.task('lint', function () {
 
 
 // Instrument the code
-gulp.task('cover', ['lint'], function () {
+gulp.task('cover', function () {
     return gulp.src(['lib/*.js'])
         .pipe(istanbul())
         .pipe(istanbul.hookRequire());
@@ -29,7 +30,7 @@ gulp.task('cover', ['lint'], function () {
 
 
 // Run tests and product coverage
-gulp.task('test', ['cover'], function () {
+gulp.task('test', function () {
     return gulp.src('test/*.js')
         .pipe(mocha({
             require : [ 'should' ]
@@ -51,7 +52,7 @@ gulp.task('deps', function() {
 
 
 // Watch certain files
-gulp.task('watch', ['deps', 'test'], function() {
+gulp.task('watch', function() {
     var globs = [
         'lib/**',
         'test/**'
@@ -65,15 +66,28 @@ gulp.task('watch', ['deps', 'test'], function() {
 
 
 // Run tests and product coverage
-gulp.task('coveralls', ['test'], function () {
+gulp.task('coveralls', function () {
     return gulp.src('coverage/lcov.info')
         .pipe(coveralls());
 });
 
 
 // Run tests and product coverage
-gulp.task('travis', ['coveralls']);
+gulp.task('travis', function(done) {
+    sequence(
+        'cover',
+        'test',
+        'coveralls'
+    )(done);
+});
 
 
 // Default task for when you run `$ gulp`
-gulp.task('default', ['watch']);
+gulp.task('default', function(done) {
+    sequence(
+        'deps',
+        'cover',
+        'test',
+        'watch'
+    )(done);
+});
