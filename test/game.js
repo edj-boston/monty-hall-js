@@ -1,9 +1,9 @@
 var Game   = require('../lib/Game.js');
 
 
-describe('Game', function() {
+describe('Game', () => {
 
-    it('Should have certain properties and values', function() {
+    it('Should have certain properties and values', () => {
         var game = new Game()
             .guestChoose()
             .hostChoose()

@@ -1,3 +1,5 @@
+'use strict';
+
 var coveralls = require('gulp-coveralls'),
     david     = require('gulp-david'),
     eslint    = require('gulp-eslint'),
@@ -9,7 +11,7 @@ var coveralls = require('gulp-coveralls'),
 
 
 // Lint as JS files (including this one)
-gulp.task('lint', function () {
+gulp.task('lint', () => {
     return gulp.src([
         'lib/*.js',
         'test/*.js',
@@ -22,7 +24,7 @@ gulp.task('lint', function () {
 
 
 // Instrument the code
-gulp.task('cover', function () {
+gulp.task('cover', () => {
     return gulp.src('lib/*.js')
         .pipe(istanbul())
         .pipe(istanbul.hookRequire());
@@ -30,7 +32,7 @@ gulp.task('cover', function () {
 
 
 // Run tests and product coverage
-gulp.task('test', function () {
+gulp.task('test', () => {
     return gulp.src('test/*.js')
         .pipe(mocha({
             require : [ 'should' ]
@@ -43,7 +45,7 @@ gulp.task('test', function () {
 
 
 // Check deps with David service
-gulp.task('deps', function() {
+gulp.task('deps', () => {
     return gulp.src('package.json')
         .pipe(david({ update: true }))
         .pipe(david.reporter)
@@ -52,28 +54,29 @@ gulp.task('deps', function() {
 
 
 // Watch certain files
-gulp.task('watch', function() {
+gulp.task('watch', () => {
     var globs = [
         'lib/**',
-        'test/**'
+        'test/**',
+        'gulpfile.js'
     ];
 
-    gulp.watch(globs, ['test'])
-        .on('change', function(e) {
+    gulp.watch(globs, ['smoke'])
+        .on('change', (e) => {
             gutil.log('File', e.type, e.path);
         });
 });
 
 
 // Run tests and product coverage
-gulp.task('coveralls', function () {
+gulp.task('coveralls', () => {
     return gulp.src('coverage/lcov.info')
         .pipe(coveralls());
 });
 
 
-// Run tests and product coverage
-gulp.task('travis', function(done) {
+// Run tests and produce coverage
+gulp.task('travis', (done) => {
     sequence(
         'cover',
         'test',
@@ -82,12 +85,23 @@ gulp.task('travis', function(done) {
 });
 
 
+// Cover, run tests, and lint
+gulp.task('smoke', (done) => {
+    sequence(
+        'cover',
+        'test',
+        'lint'
+    )(done);
+});
+
+
 // Default task for when you run `$ gulp`
-gulp.task('default', function(done) {
+gulp.task('default', (done) => {
     sequence(
         'deps',
         'cover',
         'test',
+        'lint',
         'watch'
     )(done);
 });
