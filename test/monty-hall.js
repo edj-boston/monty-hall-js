@@ -11,4 +11,13 @@ describe('MontyHall', () => {
             .should.equal(num);
     });
 
+
+    it('The number of switch and stay games should equal the total', () => {
+        var num = 100;
+        var m = new MontyHall(num);
+
+        ( m.results.stays + m.results.switches )
+            .should.equal(m.games.length);
+    });
+
 });
