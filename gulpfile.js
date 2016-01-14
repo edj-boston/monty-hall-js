@@ -23,7 +23,7 @@ gulp.task('lint', function () {
 
 // Instrument the code
 gulp.task('cover', function () {
-    return gulp.src(['lib/*.js'])
+    return gulp.src('lib/*.js')
         .pipe(istanbul())
         .pipe(istanbul.hookRequire());
 });
