@@ -2,6 +2,7 @@ var coveralls = require('gulp-coveralls'),
     david     = require('gulp-david'),
     eslint    = require('gulp-eslint'),
     gulp      = require('gulp'),
+    gutil     = require('gulp-util'),
     istanbul  = require('gulp-istanbul'),
     mocha     = require('gulp-mocha');
 
@@ -51,10 +52,15 @@ gulp.task('deps', function() {
 
 // Watch certain files
 gulp.task('watch', ['deps', 'test'], function() {
-    return gulp.watch([
+    var globs = [
         'lib/**',
         'test/**'
-    ], ['test']);
+    ];
+
+    gulp.watch(globs, ['test'])
+        .on('change', function(e) {
+            gutil.log('File', e.type, e.path);
+        });
 });
 
 
