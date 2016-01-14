@@ -22,16 +22,6 @@
     "url": "https://github.com/edj-boston/monty-hall-js/issues"
   },
   "homepage": "https://github.com/edj-boston/monty-hall-js",
-  "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-coveralls": "^0.1.4",
-    "gulp-david": "^0.3.4",
-    "gulp-eslint": "^1.1.1",
-    "gulp-istanbul": "^0.10.3",
-    "gulp-mocha": "^2.2.0",
-    "gulp-util": "^3.0.7",
-    "should": "^8.0.2"
-  },
   "eslintConfig": {
     "extends": "eslint:recommended",
     "env": {
@@ -56,6 +46,14 @@
     }
   },
   "dependencies": {
-    "gulp-sequence": "^0.4.4"
+    "gulp": "^3.9.0",
+    "gulp-coveralls": "^0.1.4",
+    "gulp-david": "^0.3.4",
+    "gulp-eslint": "^1.1.1",
+    "gulp-istanbul": "^0.10.3",
+    "gulp-mocha": "^2.2.0",
+    "gulp-sequence": "^0.4.4",
+    "gulp-util": "^3.0.7",
+    "should": "^8.0.2"
   }
 }
