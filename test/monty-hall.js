@@ -1,23 +1,22 @@
-var MontyHall = require('../lib/Monty-Hall.js');
+'use strict';
+
+const MontyHall = require('../lib/Monty-Hall.js');
 
 
 describe('MontyHall', () => {
-
     it('Should run the proper number of games', () => {
-        var num = 100;
-        var m = new MontyHall(num);
+        const num = 100;
+        const monty = new MontyHall(num);
 
-        m.games.length
+        monty.games.length
             .should.equal(num);
     });
 
-
     it('The number of switch and stay games should equal the total', () => {
-        var num = 100;
-        var m = new MontyHall(num);
+        const num = 100;
+        const monty = new MontyHall(num);
 
-        ( m.results.stays + m.results.switches )
-            .should.equal(m.games.length);
+        (monty.results.stays + monty.results.switches)
+            .should.equal(monty.games.length);
     });
-
 });
