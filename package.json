@@ -1,6 +1,6 @@
 {
   "name": "monty-hall",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "A Monty Hall problem simulator.",
   "main": "lib/monty-hall.js",
   "scripts": {
@@ -31,6 +31,7 @@
     "gulp-istanbul": "^0.10.3",
     "gulp-mocha": "^2.2.0",
     "gulp-sequence": "^0.4.5",
+    "gulp-util": "^3.0.7",
     "should": "^8.2.2"
   }
 }
