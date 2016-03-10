@@ -61,8 +61,7 @@ gulp.task('deps', () => {
 gulp.task('watch', () => {
     const globs = [
         'lib/**',
-        'test/**',
-        'gulpfile.js'
+        'test/**'
     ];
 
     gulp.watch(globs, [ 'smoke' ])
