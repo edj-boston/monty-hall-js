@@ -103,9 +103,7 @@ gulp.task('smoke', done => {
 gulp.task('default', done => {
     sequence(
         'deps',
-        'cover',
-        'test',
-        'lint',
+        'smoke',
         'watch'
     )(done);
 });
