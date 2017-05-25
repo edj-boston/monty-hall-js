@@ -28,7 +28,7 @@
     "gulp": "^3.9.1",
     "gulp-coveralls": "^0.1.4",
     "gulp-eslint": "^3.0.1",
-    "gulp-istanbul": "^0.10.3",
+    "gulp-istanbul": "^1.1.1",
     "gulp-mocha": "^2.2.0",
     "gulp-sequence": "^0.4.5",
     "gulp-util": "^3.0.7",
