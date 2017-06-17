@@ -13,20 +13,21 @@ const coveralls = require('gulp-coveralls'),
 
 // Lint as JS files (including this one)
 gulp.task('lint', () => {
-    return gulp.src([
+    const globs = [
         'lib/*.js',
         'test/*.js',
         'gulpfile.js',
         '!node_modules/**'
-    ])
-    .pipe(eslint({
-        extends       : 'eslint:recommended',
-        parserOptions : { ecmaVersion : 6 },
-        env           : { node : true, mocha : true },
-        rules
-    }))
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
+    ];
+
+    return gulp.src(globs)
+        .pipe(eslint({
+            extends       : 'eslint:recommended',
+            parserOptions : { ecmaVersion : 6 },
+            rules
+        }))
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
 });
 
 
