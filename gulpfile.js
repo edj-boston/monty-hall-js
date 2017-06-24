@@ -1,8 +1,9 @@
 'use strict';
 
-const g   = require('gulp-load-plugins')(),
-    gulp  = require('gulp'),
-    rules = require('edj-eslint-rules');
+const depcheck = require('depcheck'),
+    g          = require('gulp-load-plugins')(),
+    gulp       = require('gulp'),
+    rules      = require('edj-eslint-rules');
 
 
 // Lint as JS files (including this one)
@@ -47,10 +48,18 @@ gulp.task('test', () => {
 
 
 // Check deps with David service
-gulp.task('deps', () => {
+gulp.task('david', () => {
     return gulp.src('package.json')
         .pipe(g.david());
 });
+
+
+// Check for unused deps with depcheck
+gulp.task('depcheck', g.depcheck({
+    specials : [
+        depcheck.special['gulp-load-plugins']
+    ]
+}));
 
 
 // Watch certain files
@@ -97,7 +106,8 @@ gulp.task('smoke', done => {
 // Default task for when you run `$ gulp`
 gulp.task('default', done => {
     g.sequence(
-        'deps',
+        'david',
+        'depcheck',
         'smoke',
         'watch'
     )(done);
