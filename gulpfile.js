@@ -1,14 +1,8 @@
 'use strict';
 
-const coveralls = require('gulp-coveralls'),
-    david       = require('gulp-david'),
-    eslint      = require('gulp-eslint'),
-    gulp        = require('gulp'),
-    gutil       = require('gulp-util'),
-    istanbul    = require('gulp-istanbul'),
-    mocha       = require('gulp-mocha'),
-    rules       = require('edj-eslint-rules'),
-    sequence    = require('gulp-sequence');
+const g   = require('gulp-load-plugins')(),
+    gulp  = require('gulp'),
+    rules = require('edj-eslint-rules');
 
 
 // Lint as JS files (including this one)
@@ -21,32 +15,32 @@ gulp.task('lint', () => {
     ];
 
     return gulp.src(globs)
-        .pipe(eslint({
+        .pipe(g.eslint({
             extends       : 'eslint:recommended',
             parserOptions : { ecmaVersion : 6 },
             rules
         }))
-        .pipe(eslint.format())
-        .pipe(eslint.failAfterError());
+        .pipe(g.eslint.format())
+        .pipe(g.eslint.failAfterError());
 });
 
 
 // Instrument the code
 gulp.task('cover', () => {
     return gulp.src('lib/*.js')
-        .pipe(istanbul())
-        .pipe(istanbul.hookRequire());
+        .pipe(g.istanbul())
+        .pipe(g.istanbul.hookRequire());
 });
 
 
 // Run tests and product coverage
 gulp.task('test', () => {
     return gulp.src('test/*.js')
-        .pipe(mocha({
+        .pipe(g.mocha({
             require : [ 'should' ]
         }))
-        .pipe(istanbul.writeReports())
-        .pipe(istanbul.enforceThresholds({
+        .pipe(g.istanbul.writeReports())
+        .pipe(g.istanbul.enforceThresholds({
             thresholds : { global : 100 }
         }));
 });
@@ -55,7 +49,7 @@ gulp.task('test', () => {
 // Check deps with David service
 gulp.task('deps', () => {
     return gulp.src('package.json')
-        .pipe(david());
+        .pipe(g.david());
 });
 
 
@@ -68,7 +62,7 @@ gulp.task('watch', () => {
 
     gulp.watch(globs, [ 'smoke' ])
         .on('change', e => {
-            gutil.log('File', e.type, e.path);
+            g.util.log('File', e.type, e.path);
         });
 });
 
@@ -76,13 +70,13 @@ gulp.task('watch', () => {
 // Run tests and product coverage
 gulp.task('coveralls', () => {
     return gulp.src('coverage/lcov.info')
-        .pipe(coveralls());
+        .pipe(g.coveralls());
 });
 
 
 // Run tests and produce coverage
 gulp.task('travis', done => {
-    sequence(
+    g.sequence(
         'cover',
         'test',
         'coveralls'
@@ -92,7 +86,7 @@ gulp.task('travis', done => {
 
 // Cover, run tests, and lint
 gulp.task('smoke', done => {
-    sequence(
+    g.sequence(
         'cover',
         'test',
         'lint'
@@ -102,7 +96,7 @@ gulp.task('smoke', done => {
 
 // Default task for when you run `$ gulp`
 gulp.task('default', done => {
-    sequence(
+    g.sequence(
         'deps',
         'smoke',
         'watch'
